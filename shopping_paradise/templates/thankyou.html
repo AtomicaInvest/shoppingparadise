@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Thankyou</h1> 
+{% for item in items %}
+   <p>{{item.product.name}}</p>
+{% endfor %}
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/styles/product.css">
+{% endblock %}
+{% block script %}
+<script type="text/javascript" src="{% static 'js/product.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+    <table id="dispay-cart" class="table">
+        <tr>
+            <th>PK</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+
+            {% for product in products %}
+            <tr>
+
+                <td>{{ product.pk }}</td>
+                <td><img src="/uploads/{{product.image}}" width=50 height=50 class="product"  alt="My image"></td>
+                <td><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.category.name }}</td>
+                <td><button data-product="{{ product.pk }}" 
+                    data-price="{{ product.price }}" 
+                    data-name="{{ product.name }}" 
+                    data-image="/uploads/{{product.image}}"
+                    data-category="{{ product.category.name }}"  
+                    class="btn add-to-cart">Add to cart
+                </button></td>
+
+            </tr>
+            {% endfor %}
+
+    </table>
+    <a class="btn btn-primary" href="{% url 'product_create' %}">Add product</a>
+   
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+    
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+    
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
+
+{% endblock %}

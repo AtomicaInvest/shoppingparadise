@@ -1,0 +1,10 @@
+.vscode/
+.backend_env/
+.idea/
+venv/
+__pycache__/
+# /shopping_paradise/db.sqlite3
+django-env/
+*.pyc
+*.pyo
+.DS_STORE

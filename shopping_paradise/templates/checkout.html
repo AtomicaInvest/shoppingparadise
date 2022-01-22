@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form id="checkout" method="post">
+
+<div class="row">
+
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            {% if not user.is_authenticated %}
+                <div id="user-info">
+
+ 
+                        {% csrf_token %}
+                        {{ customer_form.as_p }}
+
+                </div>
+                {% endif %}
+                <div id="shipping-info">
+                    <hr>
+                    <p>Shipping Information:</p>
+                    <hr>
+
+                   
+                        {% csrf_token %}
+                        {{ shipping_form.as_p }}
+
+                </div>
+
+                <hr>
+                <input id="confirm-order" class="btn btn-success btn-block" type="submit" value="Confirm Order">
+
+        </div>
+        
+    </div>
+  
+    <div class="col-lg-6">
+        <div class="box-element">
+            <a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+            <hr>
+            <h3>Order Summary</h3>
+            <hr>
+
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src=""></div>
+                <div style="flex:2">Product 1</div>
+                <div style="flex:2">5</div>
+            </div>
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src=""></div>
+                <div style="flex:2">Product 2</div>
+                <div style="flex:2">3</div>
+            </div>
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src=""></div>
+                <div style="flex:2">Product 3</div>
+                <div style="flex:2">5</div>
+            </div>
+
+            <h5>Items:  <span id='total_items'></span></h5>
+            <h5>Total:  <span id='total'></span> </h5>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}

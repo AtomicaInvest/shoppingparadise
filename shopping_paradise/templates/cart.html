@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<table class="table">
+<tr>
+<th><h5>Total: </h5><span id ="total-price"></span> </th>
+<th></th>
+
+</tr>
+
+</table>
+<table id="display-cart" class="table">
+
+</table>
+<a class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

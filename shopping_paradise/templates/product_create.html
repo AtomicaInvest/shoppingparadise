@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% if perms.products.can_put_on_sale %}
+    <p> Yes I have permission</p>
+{%else%}
+    <p>I do not have permission</p>
+{%endif%}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create"/>
+    </form>
+{% endblock %}
